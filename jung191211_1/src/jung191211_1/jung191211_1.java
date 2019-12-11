@@ -12,32 +12,48 @@ public class jung191211_1 {
 			Scanner scan = new Scanner(System.in);
 			
 			int number  ;
-			int count = 0;
-			int val;
-			int sum;
-			boolean run = true;
+			int money;
+			int totalMoney = 0;
+			boolean run = true; 
 			
-			System.out.println("1~10까지의 숫자를 입력하세요");
-			val = scan.nextInt();
-			
-			number = (int)(Math.random() *10) +1;
-			
+					
 			while(run) {
-				count++;
-				if(number == val) {
-					System.out.println("정답입니다.");
+				System.out.println("-----------------------------");
+				System.out.println("1.예금 | 2.출금 | 3.잔고 | 4.종료");
+				System.out.println("-----------------------------");
+				System.out.println("선택>");
+				number = scan.nextInt();
+				//1번 예금일경우 로직
+				if(number == 1) {
+				System.out.println("예금액 > ");
+				money = scan.nextInt();
+				totalMoney += money;
+				System.out.println("현재잔액은"+ totalMoney+"입니다");
+				}
+				//2번 출금 일경우 로직
+				else if(number ==2) {
+				System.out.println("출금액 > ");
+				money = scan.nextInt();
+					if(money > totalMoney) {
+					System.out.println("잔고가 부족합니다.");
+					System.out.println("현재잔액은"+ totalMoney+"입니다");
+					}
+					else {
+					totalMoney-=money;
+					System.out.println("출금처리가되었습니다.");
+					System.out.println("현재잔액은"+ totalMoney+"입니다");
+					}
+				}
+				//3번 잔고 일경우 로직
+				if(number == 3) {
+					System.out.println("잔고 > 현재잔액은"+ totalMoney+"입니다");	
+				}
+				//4번 프로그램종료 일경우 로직
+				if(number == 4) {
 					run = false;
-				}
-				else if(number < val) {
-					System.out.println("더 작은수를입력하세요");
-					val = scan.nextInt();
-				}
-				else {
-					System.out.println("더 큰수를입력하세요");
-					val = scan.nextInt();
-				}
+					System.out.println("프로그램이 종료되었습니다");
+				}	
 			}
-			System.out.println("시도한 횟수는 " + count + "번 입니다");		
 		}
 	}
 
